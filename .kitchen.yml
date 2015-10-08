@@ -1,0 +1,43 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  require_chef_omnibus: 11.8.2 # to match my chef environment version, alter as-needed
+  chef_omnibus_install_options: -d /tmp/vagrant-cache/vagrant_omnibus
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+- name: default
+  run_list: [
+    "apt",
+    "java",
+    "recipe[repose::filter-slf4j-http-logging]",
+    "recipe[repose::filter-header-normalization]",
+    "recipe[repose::filter-header-translation]",
+    "recipe[repose::filter-header-identity]",
+    "recipe[repose::filter-ip-identity]",
+    "recipe[repose::filter-uri-identity]",
+    "recipe[repose::filter-rackspace-auth-user]",
+    "recipe[repose::filter-rate-limiting]",
+    "recipe[repose::filter-translation]",
+    "recipe[repose::filter-content-type-stripper]",
+    "recipe[repose::filter-client-authorization]",
+    "recipe[wrapper-repose::filter-extract-device-id]",
+    "recipe[wrapper-repose::filter-keystone-v2]",
+    "recipe[wrapper-repose::filter-merge-header]",
+    "recipe[wrapper-repose::filter-valkyrie-authorization]",
+
+    "recipe[repose::service-connection-pool]",
+    "recipe[repose::service-dist-datastore]",
+    "recipe[wrapper-repose::default]",
+    "recipe[minitest-handler]"
+  ]
+  attributes:
+    repose:
+      client_auth:
+        auth_provider: 'OPENSTACK'
+      rewrite_host_header: false

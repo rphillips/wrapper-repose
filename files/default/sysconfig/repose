@@ -1,0 +1,13 @@
+JAVA=/usr/lib/jvm/java-8-oracle-amd64/bin/java
+CONFIG_DIRECTORY=/etc/repose
+USER=repose
+NAME=repose-valve
+DAEMON_HOME=/usr/share/repose
+PID_FILE=/var/run/${NAME}.pid
+REPOSE_JAR=${DAEMON_HOME}/${NAME}.jar
+# default start args
+#START_ARGS="--start --quiet --oknodo --make-pidfile --pidfile ${PID_FILE} --background"
+
+JAVA_OPTS="-server -Xms512m -Xmx512m -XX:MetaspaceSize=256m"
+RUN_OPTS="-c $CONFIG_DIRECTORY"
+CLEAN=/usr/bin/clean-repose-deploy

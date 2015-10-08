@@ -10,11 +10,11 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
   valkyrie_username = repose_credentials["valkyrie_username_#{node.ele.env}"]
   valkyrie_password = repose_credentials["valkyrie_password_#{node.ele.env}"]
 
-  node['repose']['keystone_v2']['identity_username'] = 'identity_username'
-  node['repose']['keystone_v2']['identity_password'] = 'identity_p4ssw0rd'
+  node['repose']['keystone_v2']['identity_username'] = identity_username
+  node['repose']['keystone_v2']['identity_password'] = identity_password
 
-  node['repose']['valkyrie_authorization']['valkyrie_server_username'] = 'username'
-  node['repose']['valkyrie_authorization']['valkyrie_server_password'] = 'p4ssw0rd'
+  node['repose']['valkyrie_authorization']['valkyrie_server_username'] = valkyrie_username
+  node['repose']['valkyrie_authorization']['valkyrie_server_password'] = valkyrie_password
 
   # set non-default (environment-specific) configuration
   node['repose']['keystone_v2']['identity_uri'] = node['ele']['us_identity_service_url_2']

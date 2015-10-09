@@ -1,3 +1,14 @@
+# do some pre-configuration to ensure repose starts with the correct java, etc. (pkg install will auto-start service)
+cookbook_file '/etc/sysconfig/repose' do
+  source 'sysconfig/repose'
+  owner 'root'
+  group 'root'
+  mode 0755
+  action :create
+end
+
+include_recipe 'java'
+
 include_recipe 'repose'
 
 if %w(ele-stage ele-prod).include?(node.chef_environment)
@@ -85,15 +96,3 @@ end
 resources("template[#{node['repose']['config_directory']}/container.cfg.xml]").cookbook 'wrapper-repose'
 
 resources("template[#{node['repose']['config_directory']}/system-model.cfg.xml]").cookbook 'wrapper-repose'
-
-# use our sysconfig
-
-cookbook_file '/etc/sysconfig/repose' do
-  source 'sysconfig/repose'
-  owner 'root'
-  group 'root'
-  mode 0755
-  action :create
-end
-
-include_recipe 'java'

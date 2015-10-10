@@ -9,6 +9,10 @@ end
 
 include_recipe 'java'
 
+# TODO download https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear and place in /usr/share/repose/filters/
+
+# TODO update from wiki instructions https://one.rackspace.com/pages/viewpage.action?title=Install+Repose+on+ELE+VM&spaceKey=monitoring
+
 include_recipe 'repose'
 
 if %w(ele-stage ele-prod).include?(node.chef_environment)

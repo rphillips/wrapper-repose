@@ -104,3 +104,4 @@ default['java']['oracle']['accept_oracle_download_terms'] = true
 default['java']['jdk_version'] = '8'
 default['java']['set_default'] = false
 default['java']['reset_alternatives'] = false
+default['java']['use_alt_suffix'] = false

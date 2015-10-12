@@ -95,11 +95,10 @@ default['repose']['merge_header']['cluster_id'] = ['all']
 default['repose']['merge_header']['uri_regex'] = nil
 default['repose']['merge_header']['headers'] = %w(X-Roles X-Impersonator-Roles)
 
-# TODO: check if this could conflict with another use of the java cookbook
-# java configuration
+# TODO: use force_default on mandatory settings that might otherwise be set
 default['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
-default['java']['jdk_version'] = '8'
+default['java']['jdk_version'] = '8' # override_default
 default['java']['set_default'] = false
 default['java']['reset_alternatives'] = false
 default['java']['use_alt_suffix'] = false

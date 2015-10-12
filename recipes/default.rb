@@ -19,11 +19,11 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
   # load non-default secrets
   repose_credentials = Chef::EncryptedDataBagItem.load('credentials', 'repose')
 
-  identity_username = repose_credentials["identity_username_#{node.ele.env}"]
-  identity_password = repose_credentials["identity_password_#{node.ele.env}"]
+  identity_username = repose_credentials["identity_username_#{node['ele']['env']}"]
+  identity_password = repose_credentials["identity_password_#{node['ele']['env']}"]
 
-  valkyrie_username = repose_credentials["valkyrie_username_#{node.ele.env}"]
-  valkyrie_password = repose_credentials["valkyrie_password_#{node.ele.env}"]
+  valkyrie_username = repose_credentials["valkyrie_username_#{node['ele']['env']}"]
+  valkyrie_password = repose_credentials["valkyrie_password_#{node['ele']['env']}"]
 
   node.set['repose']['keystone_v2']['identity_username'] = identity_username
   node.set['repose']['keystone_v2']['identity_password'] = identity_password

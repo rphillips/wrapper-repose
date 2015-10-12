@@ -10,9 +10,9 @@ template "#{node['repose']['config_directory']}/extract-device-id.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    :maas_service_uri => node['wrapper-repose']['extract_device_id']['maas_service_uri'],
-    :cache_timeout_millis => node['wrapper-repose']['extract_device_id']['cache_timeout_millis'],
-    :delegating_quality => node['wrapper-repose']['extract_device_id']['delegating_quality']
+    maas_service_uri: node['wrapper-repose']['extract_device_id']['maas_service_uri'],
+    cache_timeout_millis: node['wrapper-repose']['extract_device_id']['cache_timeout_millis'],
+    delegating_quality: node['wrapper-repose']['extract_device_id']['delegating_quality']
   )
   notifies :restart, 'service[repose-valve]'
 end

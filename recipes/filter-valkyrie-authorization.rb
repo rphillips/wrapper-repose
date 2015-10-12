@@ -1,9 +1,7 @@
 include_recipe 'repose::install'
 
-# unless node['repose']['filters'].include? 'valkyrie-authorization'
-#   filters = node['repose']['filters'] + ['valkyrie-authorization']
-#   node.normal['repose']['filters'] = filters
-# end
+# add only if it doesn't already exist
+node.set['repose']['filters'] |= %w(valkyrie-authorization)
 
 template "#{node['repose']['config_directory']}/valkyrie-authorization.cfg.xml" do
   owner node['repose']['owner']

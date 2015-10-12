@@ -1,9 +1,7 @@
 include_recipe 'repose::install'
 
-# unless node['repose']['filters'].include? 'extract-device-id'
-#   filters = node['repose']['filters'] + ['extract-device-id']
-#   node.normal['repose']['filters'] = filters
-# end
+# add only if it doesn't already exist
+node.set['repose']['filters'] |= %w(extract-device-id)
 
 template "#{node['repose']['config_directory']}/extract-device-id.cfg.xml" do
   owner node['repose']['owner']

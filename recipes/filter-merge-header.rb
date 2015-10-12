@@ -1,9 +1,7 @@
 include_recipe 'repose::install'
 
-# unless node['repose']['filters'].include? 'merge-header'
-#   filters = node['repose']['filters'] + ['merge-header']
-#   node.normal['repose']['filters'] = filters
-# end
+# add only if it doesn't already exist
+node.set['repose']['filters'] |= %w(merge-header)
 
 template "#{node['repose']['config_directory']}/merge-header.cfg.xml" do
   owner node['repose']['owner']

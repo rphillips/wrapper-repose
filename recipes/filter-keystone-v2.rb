@@ -1,9 +1,7 @@
 include_recipe 'repose::install'
 
-# unless node['repose']['filters'].include? 'keystone-v2'
-#   filters = node['repose']['filters'] + ['keystone-v2']
-#   node.normal['repose']['filters'] = filters
-# end
+# add only if it doesn't already exist
+node.set['repose']['filters'] |= %w(keystone-v2)
 
 template "#{node['repose']['config_directory']}/keystone-v2.cfg.xml" do
   owner node['repose']['owner']

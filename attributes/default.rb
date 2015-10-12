@@ -8,8 +8,6 @@ default['repose']['filters'] = %w(
   merge-header
 )
 
-# default['repose']['filters'] = %w(derp)
-
 default['repose']['endpoints'] = [{
   cluster_id: 'repose',
   id: node[:name],

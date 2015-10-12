@@ -5,6 +5,7 @@
     <deployment-config connection-timeout="<%= @connection_timeout %>" read-timeout="<%= @read_timeout %>">
         <deployment-directory auto-clean="<%= @deploy_auto_clean %>">/var/repose</deployment-directory>
         <artifact-directory check-interval="<%= @filter_check_interval %>">/usr/share/repose/filters</artifact-directory>
+        <!-- TODO try pointing this to file:///etc/repose/log4j2.xml to fix initial startup not logging anything -->
         <logging-configuration href="log4j2.xml" />
     </deployment-config>
 </repose-container>

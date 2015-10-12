@@ -100,3 +100,12 @@ end
 resources("template[#{node['repose']['config_directory']}/container.cfg.xml]").cookbook 'wrapper-repose'
 
 resources("template[#{node['repose']['config_directory']}/system-model.cfg.xml]").cookbook 'wrapper-repose'
+
+# TODO make the version an attribute
+remote_file '/usr/share/repose/filters/custom-bundle-1.0-SNAPSHOT.ear' do
+  source 'https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear'
+  owner 'repose'
+  group 'repose'
+  mode '0755'
+  action :create
+end

@@ -1,5 +1,5 @@
 include_recipe 'repose::install'
-#
+
 # unless node['repose']['filters'].include? 'extract-device-id'
 #   filters = node['repose']['filters'] + ['extract-device-id']
 #   node.normal['repose']['filters'] = filters

@@ -3,7 +3,7 @@ cookbook_file '/etc/sysconfig/repose' do
   source 'sysconfig/repose'
   owner 'root'
   group 'root'
-  mode 0755
+  mode '0755'
   action :create
 end
 
@@ -25,21 +25,17 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
   valkyrie_username = repose_credentials["valkyrie_username_#{node.ele.env}"]
   valkyrie_password = repose_credentials["valkyrie_password_#{node.ele.env}"]
 
-  node['repose']['keystone_v2']['identity_username'] = identity_username
-  node['repose']['keystone_v2']['identity_password'] = identity_password
+  node.set['repose']['keystone_v2']['identity_username'] = identity_username
+  node.set['repose']['keystone_v2']['identity_password'] = identity_password
 
-  node['repose']['valkyrie_authorization']['valkyrie_server_username'] = valkyrie_username
-  node['repose']['valkyrie_authorization']['valkyrie_server_password'] = valkyrie_password
+  node.set['repose']['valkyrie_authorization']['valkyrie_server_username'] = valkyrie_username
+  node.set['repose']['valkyrie_authorization']['valkyrie_server_password'] = valkyrie_password
 
   # set non-default (environment-specific) configuration
-  node['repose']['keystone_v2']['identity_uri'] = node['ele']['us_identity_service_url_2']
+  node.set['repose']['keystone_v2']['identity_uri'] = node['ele']['us_identity_service_url_2']
 end
 
 # override various upstream cookbook definitions
-
-filters = node['repose']['filters']
-
-services = node['repose']['services']
 
 filter_cluster_map = {
   :'api-validator'          => node['repose']['api_validator']['cluster_id'],
@@ -54,7 +50,7 @@ filter_cluster_map = {
   :'rackspace-auth-user'    => node['repose']['rackspace_auth_user']['cluster_id'],
   :'rate-limiting'          => node['repose']['rate_limiting']['cluster_id'],
   :'slf4j-http-logging'     => node['repose']['slf4j_http_logging']['cluster_id'],
-  :translation            => node['repose']['translation']['cluster_id'],
+  :translation              => node['repose']['translation']['cluster_id'],
   :'uri-identity'           => node['repose']['uri_identity']['cluster_id'],
   :'keystone-v2'            => node['repose']['keystone_v2']['cluster_id'],
   :'extract-device-id'      => node['repose']['extract_device_id']['cluster_id'],
@@ -85,9 +81,9 @@ begin
     cluster_ids: node['repose']['cluster_ids'],
     rewrite_host_header: node['repose']['rewrite_host_header'],
     nodes: node['repose']['peers'],
-    services: services,
+    services: node['repose']['services'],
     service_cluster_map: service_cluster_map,
-    filters: filters,
+    filters: node['wrapper-repose']['filters'],
     filter_cluster_map: filter_cluster_map,
     filter_uri_regex_map: filter_uri_regex_map,
     endpoints: node['repose']['endpoints']

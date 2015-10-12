@@ -37,7 +37,7 @@ end
 
 # override various upstream cookbook definitions
 
-filters = node['wrapper-repose']['filters']
+filters = node['repose']['filters']
 
 services = node['repose']['services']
 
@@ -56,18 +56,18 @@ filter_cluster_map = {
   :'slf4j-http-logging'     => node['repose']['slf4j_http_logging']['cluster_id'],
   :translation            => node['repose']['translation']['cluster_id'],
   :'uri-identity'           => node['repose']['uri_identity']['cluster_id'],
-  :'keystone-v2'            => node['wrapper-repose']['keystone_v2']['cluster_id'],
-  :'extract-device-id'      => node['wrapper-repose']['extract_device_id']['cluster_id'],
-  :'valkyrie-authorization' => node['wrapper-repose']['valkyrie_authorization']['cluster_id'],
-  :'merge-header'           => node['wrapper-repose']['merge_header']['cluster_id']
+  :'keystone-v2'            => node['repose']['keystone_v2']['cluster_id'],
+  :'extract-device-id'      => node['repose']['extract_device_id']['cluster_id'],
+  :'valkyrie-authorization' => node['repose']['valkyrie_authorization']['cluster_id'],
+  :'merge-header'           => node['repose']['merge_header']['cluster_id']
 }
 
 filter_uri_regex_map = {
   :'header-normalization'   => node['repose']['header_normalization']['uri_regex'],
-  :'keystone-v2'            => node['wrapper-repose']['keystone_v2']['uri_regex'],
-  :'extract-device-id'      => node['wrapper-repose']['extract_device_id']['uri_regex'],
-  :'valkyrie-authorization' => node['wrapper-repose']['valkyrie_authorization']['uri_regex'],
-  :'merge-header'           => node['wrapper-repose']['merge_header']['uri_regex']
+  :'keystone-v2'            => node['repose']['keystone_v2']['uri_regex'],
+  :'extract-device-id'      => node['repose']['extract_device_id']['uri_regex'],
+  :'valkyrie-authorization' => node['repose']['valkyrie_authorization']['uri_regex'],
+  :'merge-header'           => node['repose']['merge_header']['uri_regex']
 }
 
 service_cluster_map = {
@@ -97,9 +97,9 @@ rescue Chef::Exceptions::ResourceNotFound
   Chef::Log.warn("template #{node['repose']['config_directory']}/system-model.cfg.xml not defined upstream")
 end
 
-resources("template[#{node['repose']['config_directory']}/container.cfg.xml]").cookbook 'wrapper-repose'
+resources("template[#{node['repose']['config_directory']}/container.cfg.xml]").cookbook 'repose'
 
-resources("template[#{node['repose']['config_directory']}/system-model.cfg.xml]").cookbook 'wrapper-repose'
+resources("template[#{node['repose']['config_directory']}/system-model.cfg.xml]").cookbook 'repose'
 
 # TODO: make the version an attribute
 remote_file '/usr/share/repose/filters/custom-bundle-1.0-SNAPSHOT.ear' do

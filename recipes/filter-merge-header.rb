@@ -10,7 +10,7 @@ template "#{node['repose']['config_directory']}/merge-header.cfg.xml" do
   group node['repose']['group']
   mode '0644'
   variables(
-    headers: node['wrapper-repose']['merge_header']['headers']
+    headers: node['repose']['merge_header']['headers']
   )
   notifies :restart, 'service[repose-valve]'
 end

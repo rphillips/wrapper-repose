@@ -9,15 +9,15 @@ end
 
 include_recipe 'java'
 
-# TODO download https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear and place in /usr/share/repose/filters/
+# TODO: download https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear and place in /usr/share/repose/filters/
 
-# TODO update from wiki instructions https://one.rackspace.com/pages/viewpage.action?title=Install+Repose+on+ELE+VM&spaceKey=monitoring
+# TODO: update from wiki instructions https://one.rackspace.com/pages/viewpage.action?title=Install+Repose+on+ELE+VM&spaceKey=monitoring
 
 include_recipe 'repose'
 
 if %w(ele-stage ele-prod).include?(node.chef_environment)
   # load non-default secrets
-  repose_credentials = Chef::EncryptedDataBagItem.load("credentials", "repose")
+  repose_credentials = Chef::EncryptedDataBagItem.load('credentials', 'repose')
 
   identity_username = repose_credentials["identity_username_#{node.ele.env}"]
   identity_password = repose_credentials["identity_password_#{node.ele.env}"]
@@ -42,40 +42,40 @@ filters = node['wrapper-repose']['filters']
 services = node['repose']['services']
 
 filter_cluster_map = {
-  :'api-validator'          => node['repose']['api_validator'         ]['cluster_id'],
-  :'client-auth'            => node['repose']['client_auth'           ]['cluster_id'],
-  :'client-authorization'   => node['repose']['client_authorization'  ]['cluster_id'],
-  :'content-type-stripper'  => node['repose']['content_type_stripper' ]['cluster_id'],
-  :derp                     => node['repose']['derp'                  ]['cluster_id'],
-  :'header-identity'        => node['repose']['header_identity'       ]['cluster_id'],
-  :'header-normalization'   => node['repose']['header_normalization'  ]['cluster_id'],
-  :'header-translation'     => node['repose']['header_translation'    ]['cluster_id'],
-  :'ip-identity'            => node['repose']['ip_identity'           ]['cluster_id'],
-  :'rackspace-auth-user'    => node['repose']['rackspace_auth_user'   ]['cluster_id'],
-  :'rate-limiting'          => node['repose']['rate_limiting'         ]['cluster_id'],
-  :'slf4j-http-logging'     => node['repose']['slf4j_http_logging'    ]['cluster_id'],
-  :'translation'            => node['repose']['translation'           ]['cluster_id'],
-  :'uri-identity'           => node['repose']['uri_identity'          ]['cluster_id'],
-  :'keystone-v2'            => node['wrapper-repose']['keystone_v2'           ]['cluster_id'],
-  :'extract-device-id'      => node['wrapper-repose']['extract_device_id'     ]['cluster_id'],
+  :'api-validator'          => node['repose']['api_validator']['cluster_id'],
+  :'client-auth'            => node['repose']['client_auth']['cluster_id'],
+  :'client-authorization'   => node['repose']['client_authorization']['cluster_id'],
+  :'content-type-stripper'  => node['repose']['content_type_stripper']['cluster_id'],
+  :derp                     => node['repose']['derp']['cluster_id'],
+  :'header-identity'        => node['repose']['header_identity']['cluster_id'],
+  :'header-normalization'   => node['repose']['header_normalization']['cluster_id'],
+  :'header-translation'     => node['repose']['header_translation']['cluster_id'],
+  :'ip-identity'            => node['repose']['ip_identity']['cluster_id'],
+  :'rackspace-auth-user'    => node['repose']['rackspace_auth_user']['cluster_id'],
+  :'rate-limiting'          => node['repose']['rate_limiting']['cluster_id'],
+  :'slf4j-http-logging'     => node['repose']['slf4j_http_logging']['cluster_id'],
+  :translation            => node['repose']['translation']['cluster_id'],
+  :'uri-identity'           => node['repose']['uri_identity']['cluster_id'],
+  :'keystone-v2'            => node['wrapper-repose']['keystone_v2']['cluster_id'],
+  :'extract-device-id'      => node['wrapper-repose']['extract_device_id']['cluster_id'],
   :'valkyrie-authorization' => node['wrapper-repose']['valkyrie_authorization']['cluster_id'],
-  :'merge-header'           => node['wrapper-repose']['merge_header'          ]['cluster_id']
+  :'merge-header'           => node['wrapper-repose']['merge_header']['cluster_id']
 }
 
 filter_uri_regex_map = {
-  :'header-normalization'   => node['repose']['header_normalization'  ]['uri_regex'],
-  :'keystone-v2'            => node['wrapper-repose']['keystone_v2'           ]['uri_regex'],
-  :'extract-device-id'      => node['wrapper-repose']['extract_device_id'     ]['uri_regex'],
+  :'header-normalization'   => node['repose']['header_normalization']['uri_regex'],
+  :'keystone-v2'            => node['wrapper-repose']['keystone_v2']['uri_regex'],
+  :'extract-device-id'      => node['wrapper-repose']['extract_device_id']['uri_regex'],
   :'valkyrie-authorization' => node['wrapper-repose']['valkyrie_authorization']['uri_regex'],
-  :'merge-header'           => node['wrapper-repose']['merge_header'          ]['uri_regex']
+  :'merge-header'           => node['wrapper-repose']['merge_header']['uri_regex']
 }
 
 service_cluster_map = {
-    :'dist-datastore' => node['repose']['dist_datastore' ]['cluster_id']
+  :'dist-datastore' => node['repose']['dist_datastore']['cluster_id']
 }
 
 begin
-  r = resources(:template => "#{node['repose']['config_directory']}/system-model.cfg.xml")
+  r = resources(template: "#{node['repose']['config_directory']}/system-model.cfg.xml")
   r.cookbook 'repose-wrapper'
   r.source 'system-model.cfg.xml.erb'
   r.owner node['repose']['owner']
@@ -101,7 +101,7 @@ resources("template[#{node['repose']['config_directory']}/container.cfg.xml]").c
 
 resources("template[#{node['repose']['config_directory']}/system-model.cfg.xml]").cookbook 'wrapper-repose'
 
-# TODO make the version an attribute
+# TODO: make the version an attribute
 remote_file '/usr/share/repose/filters/custom-bundle-1.0-SNAPSHOT.ear' do
   source 'https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear'
   owner 'repose'

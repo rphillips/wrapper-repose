@@ -82,9 +82,6 @@ default['repose']['valkyrie_authorization']['cache_timeout_millis'] = 60000
 default['repose']['valkyrie_authorization']['enable_masking_403s'] = true
 default['repose']['valkyrie_authorization']['delegating_quality'] = nil
 
-# TODO: make this dependent on environment
-# 'https://valkyrie.staging.my.rackspace.com'
-# 'https://valkyrie.my.rackspace.com'
 default['repose']['valkyrie_authorization']['valkyrie_server_uri'] = 'http://valkyrie.my.example.com'
 
 # defaults are for dev/local (recipe overrides with encrypted data bag item by ele environment)

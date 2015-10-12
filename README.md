@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mmi-cookbooks/wrapper-repose.svg)](https://travis-ci.org/mmi-cookbooks/wrapper-repose)
+
 # repose-wrapper-cookbook
 
 TODO: Enter the cookbook description here.

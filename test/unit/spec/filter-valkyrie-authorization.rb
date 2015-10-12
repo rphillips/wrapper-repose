@@ -5,5 +5,4 @@ describe 'wrapper-repose::filter-valkyrie-authorization' do
   before { stub_resources }
 
   let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
-
 end

@@ -5,7 +5,7 @@ maintainer_email 'sfo-devops@lists.rackspace.com'
 license 'Apache 2.0'
 description 'Installs/Configures wrapper-repose'
 long_description 'Installs/Configures wrapper-repose'
-version '0.2.0'
+version '0.2.1'
 
 depends 'apt'
 depends 'java'

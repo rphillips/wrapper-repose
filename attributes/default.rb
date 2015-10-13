@@ -65,9 +65,6 @@ default['repose']['keystone_v2']['uri_regex'] = nil
 default['repose']['keystone_v2']['identity_username'] = 'identity_username'
 default['repose']['keystone_v2']['identity_password'] = 'identity_p4ssw0rd'
 
-# TODO: read this from somewhere else (already exists in chef?  surely...) and make dependent on environment
-# 'https://staging.identity.api.rackspacecloud.com'
-# 'https://identity.api.rackspacecloud.com'
 default['repose']['keystone_v2']['identity_uri'] = 'http://identity.api.example.com'
 default['repose']['keystone_v2']['identity_set_roles'] = true
 default['repose']['keystone_v2']['identity_set_groups'] = false

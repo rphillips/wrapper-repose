@@ -124,3 +124,4 @@ remote_file '/usr/share/repose/filters/custom-bundle-1.0-SNAPSHOT.ear' do
   mode '0755'
   action :create
 end
+

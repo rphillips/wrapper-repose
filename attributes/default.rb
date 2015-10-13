@@ -1,21 +1,19 @@
 # tweaks to existing repose attributes
 
 default['repose']['filters'] = %w(
-  header-normalization,
-  keystone-v2,
-  extract-device-id,
-  valkyrie-authorization,
+  header-normalization
+  keystone-v2
+  extract-device-id
+  valkyrie-authorization
   merge-header
 )
-
-# default['repose']['filters'] = %w(derp)
 
 default['repose']['endpoints'] = [{
   cluster_id: 'repose',
   id: node[:name],
   protocol: 'http',
   hostname: node[:fqdn],
-  port: '8090',
+  port: '7000',
   root_path: '/',
   default: true
 }]
@@ -49,7 +47,6 @@ default['repose']['header_normalization']['blacklist'] = [{
 }]
 
 # attributes for new recipes
-
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
 default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:7010'
@@ -92,7 +89,6 @@ default['repose']['merge_header']['cluster_id'] = ['all']
 default['repose']['merge_header']['uri_regex'] = nil
 default['repose']['merge_header']['headers'] = %w(X-Roles X-Impersonator-Roles)
 
-# TODO: use force_default on mandatory settings that might otherwise be set
 default['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 default['java']['jdk_version'] = '8' # override_default

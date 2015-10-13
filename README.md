@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/mmi-cookbooks/wrapper-repose.svg)](https://travis-ci.org/mmi-cookbooks/wrapper-repose)
 
-# repose-wrapper-cookbook
+# wrapper-repose-cookbook
 
 TODO: Enter the cookbook description here.
 
@@ -18,7 +18,7 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['repose-wrapper']['bacon']</tt></td>
+    <td><tt>['wrapper-repose']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -27,14 +27,14 @@ TODO: List your supported platforms.
 
 ## Usage
 
-### repose-wrapper::default
+### wrapper-repose::default
 
-Include `repose-wrapper` in your node's `run_list`:
+Include `wrapper-repose` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[repose-wrapper::default]"
+    "recipe[wrapper-repose::default]"
   ]
 }
 ```

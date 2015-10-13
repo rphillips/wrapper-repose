@@ -116,12 +116,10 @@ template "#{node['repose']['config_directory']}/container.cfg.xml" do
   notifies :restart, 'service[repose-valve]'
 end
 
-# TODO: make the version an attribute
-remote_file '/usr/share/repose/filters/custom-bundle-1.0-SNAPSHOT.ear' do
-  source 'https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/custom-bundle-1.0-SNAPSHOT.ear'
-  owner 'repose'
-  group 'repose'
+remote_file "/usr/share/repose/filters/#{node['repose']['bundle_name']}" do
+  source "https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/#{node['repose']['bundle_name']}"
+  owner node['repose']['owner']
+  group node['repose']['group']
   mode '0755'
   action :create
 end
-

@@ -47,6 +47,8 @@ default['repose']['header_normalization']['blacklist'] = [{
 }]
 
 # attributes for new recipes
+default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
+
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
 default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:7010'

@@ -13,7 +13,7 @@ default['repose']['endpoints'] = [{
   id: node[:name],
   protocol: 'http',
   hostname: node[:fqdn],
-  port: '8090',
+  port: '7000',
   root_path: '/',
   default: true
 }]

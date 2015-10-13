@@ -54,7 +54,7 @@ default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
-default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:7010'
+default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:32321'
 default['repose']['extract_device_id']['cache_timeout_millis'] = 60000
 default['repose']['extract_device_id']['delegating_quality'] = nil
 
@@ -65,7 +65,7 @@ default['repose']['keystone_v2']['uri_regex'] = nil
 default['repose']['keystone_v2']['identity_username'] = 'identity_username'
 default['repose']['keystone_v2']['identity_password'] = 'identity_p4ssw0rd'
 
-default['repose']['keystone_v2']['identity_uri'] = 'http://identity.api.example.com'
+default['repose']['keystone_v2']['identity_uri'] = 'http://localhost:8900/identity'
 default['repose']['keystone_v2']['identity_set_roles'] = true
 default['repose']['keystone_v2']['identity_set_groups'] = false
 default['repose']['keystone_v2']['identity_set_catalog'] = false
@@ -80,12 +80,10 @@ default['repose']['valkyrie_authorization']['uri_regex'] = '.*/hybrid:\d+/(?!age
 default['repose']['valkyrie_authorization']['cache_timeout_millis'] = 60000
 default['repose']['valkyrie_authorization']['enable_masking_403s'] = true
 default['repose']['valkyrie_authorization']['delegating_quality'] = nil
-
-default['repose']['valkyrie_authorization']['valkyrie_server_uri'] = 'http://valkyrie.my.example.com'
-
+default['repose']['valkyrie_authorization']['valkyrie_server_uri'] = 'http://localhost:8900/valkyrie/v2.0'
 # defaults are for dev/local (recipe overrides with encrypted data bag item by ele environment)
-default['repose']['valkyrie_authorization']['valkyrie_server_username'] = 'username'
-default['repose']['valkyrie_authorization']['valkyrie_server_password'] = 'p4ssw0rd'
+default['repose']['valkyrie_authorization']['valkyrie_server_username'] = 'valkyrie_username'
+default['repose']['valkyrie_authorization']['valkyrie_server_password'] = 'valkyrie_p4ssw0rd'
 
 default['repose']['merge_header']['cluster_id'] = ['all']
 default['repose']['merge_header']['uri_regex'] = nil

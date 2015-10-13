@@ -46,6 +46,9 @@ default['repose']['header_normalization']['blacklist'] = [{
   )
 }]
 
+default['repose']['owner'] = 'repose'
+default['repose']['group'] = 'repose'
+
 # attributes for new recipes
 default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
 

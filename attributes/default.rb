@@ -1,5 +1,13 @@
 # tweaks to existing repose attributes
 
+default['repose']['peers'] = [
+  { 'cluster_id' => 'repose',
+    'id' => 'repose_node',
+    'hostname' => 'localhost',
+    'port' => '8080' # TODO: set this to 13579 in dev and 8080 in stage and prod
+  }
+]
+
 default['repose']['filters'] = %w(
   header-normalization
   keystone-v2
@@ -12,8 +20,8 @@ default['repose']['endpoints'] = [{
   cluster_id: 'repose',
   id: node[:name],
   protocol: 'http',
-  hostname: node[:fqdn],
-  port: '7000',
+  hostname: 'localhost',
+  port: '7000', # TODO: set this to 32321 in dev and 7000 in stage and prod
   root_path: '/',
   default: true
 }]

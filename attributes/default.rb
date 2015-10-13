@@ -18,7 +18,7 @@ default['repose']['filters'] = %w(
 
 default['repose']['endpoints'] = [{
   cluster_id: 'repose',
-  id: node[:name],
+  id: 'public_api'
   protocol: 'http',
   hostname: 'localhost',
   port: '7000', # TODO: set this to 32321 in dev and 7000 in stage and prod

@@ -17,7 +17,7 @@ default['repose']['filters'] = %w(
 
 default['repose']['endpoints'] = [{
   cluster_id: 'repose',
-  id: 'public_api'
+  id: 'public_api',
   protocol: 'http',
   hostname: 'localhost',
   port: '32321',

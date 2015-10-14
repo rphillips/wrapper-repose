@@ -62,6 +62,27 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
 
   # set non-default (environment-specific) configuration
   node.set['repose']['keystone_v2']['identity_uri'] = node['ele']['us_identity_service_url_2']
+
+  # TODO: these next two attr updates would break a default len > 1 list of peers (should iterate and update ports?)
+  # update for stage/prod port
+  node.set['repose']['peers'] = [{
+    cluster_id: 'repose',
+    id: 'repose_node',
+    hostname: 'localhost',
+    port: '8080'
+  }]
+
+  # update for stage/prod port
+  node.set['repose']['endpoints'] = [{
+    cluster_id: 'repose',
+    id: node[:name],
+    protocol: 'http',
+    hostname: 'localhost',
+    port: '7000',
+    root_path: '/',
+    default: true
+  }]
+
 end
 
 # NOTE these hash keys should be left as strings or system-model.cfg.xml.erb will break

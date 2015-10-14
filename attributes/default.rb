@@ -1,12 +1,11 @@
 # tweaks to existing repose attributes
 
-default['repose']['peers'] = [
-  { 'cluster_id' => 'repose',
-    'id' => 'repose_node',
-    'hostname' => 'localhost',
-    'port' => '8080' # TODO: set this to 13579 in dev and 8080 in stage and prod
-  }
-]
+default['repose']['peers'] = [{
+  cluster_id: 'repose',
+  id: 'repose_node',
+  hostname: 'localhost',
+  port: '13579'
+}]
 
 default['repose']['filters'] = %w(
   header-normalization
@@ -21,7 +20,7 @@ default['repose']['endpoints'] = [{
   id: node[:name],
   protocol: 'http',
   hostname: 'localhost',
-  port: '7000', # TODO: set this to 32321 in dev and 7000 in stage and prod
+  port: '32321',
   root_path: '/',
   default: true
 }]
@@ -62,6 +61,7 @@ default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
+# TODO: is this maas_service_uri valid for all environments or does it need to be different for stage/prod?
 default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:32321'
 default['repose']['extract_device_id']['cache_timeout_millis'] = 60000
 default['repose']['extract_device_id']['delegating_quality'] = nil

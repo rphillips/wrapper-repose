@@ -1,3 +1,6 @@
-# 0.1.0
+# 0.2.3
+- RC1 :)
 
-Initial release of wrapper-repose
+
+# 0.1.0
+- Initial release of wrapper-repose

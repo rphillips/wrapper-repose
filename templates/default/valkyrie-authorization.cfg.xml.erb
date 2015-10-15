@@ -43,5 +43,18 @@
                 </json>
             </collection>
         </resource>
+        <resource>
+            <path-regex>.*/hybrid:\d+/views/metric_list</path-regex>
+            <collection>
+                <json>
+                    <path-to-collection>$.values</path-to-collection>
+                    <path-to-device-id>
+                        <path>$.uri</path>
+                        <regex>http://core.rackspace.com/accounts/\d*/devices/(\d*)</regex>
+                    </path-to-device-id>
+                    <path-to-item-count>$.metadata.count</path-to-item-count>
+                </json>
+            </collection>
+        </resource>
     </collection-resources>
 </valkyrie-authorization>

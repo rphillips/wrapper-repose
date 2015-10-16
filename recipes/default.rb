@@ -63,7 +63,6 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
     identity_password = ele_credentials[ele_us_auth_api_databag_item]
   end
 
-
   valkyrie_url = repose_credentials["valkyrie_url_#{node['ele']['env']}"]
   valkyrie_username = repose_credentials["valkyrie_username_#{node['ele']['env']}"]
   valkyrie_password = repose_credentials["valkyrie_password_#{node['ele']['env']}"]

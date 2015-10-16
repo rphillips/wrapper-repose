@@ -1,3 +1,7 @@
+# 0.2.5
+- specify arch for when kernel[:machine] is nil
+- move custom bundle and jdk to cloud files
+
 # 0.2.4
 - updated jvm heap to 256/1024 (min/max)
 - tweaked stage/prod credential handling

@@ -61,7 +61,6 @@ default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
-# TODO: is this maas_service_uri valid for all environments or does it need to be different for stage/prod?
 default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:32321'
 default['repose']['extract_device_id']['cache_timeout_millis'] = 60000
 default['repose']['extract_device_id']['delegating_quality'] = nil

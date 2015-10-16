@@ -154,7 +154,8 @@ template "#{node['repose']['config_directory']}/container.cfg.xml" do
 end
 
 remote_file "/usr/share/repose/filters/#{node['repose']['bundle_name']}" do
-  source "https://ele-buildbot.cm.k1k.me/distfiles/custom-bundle/#{node['repose']['bundle_name']}"
+  # distfiles container in maasproject cloud files account (credentials in secure.git)
+  source "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/custom-bundle-1.0-SNAPSHOT.ear"
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0755'

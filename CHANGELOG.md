@@ -1,3 +1,6 @@
+# 0.2.6
+- use direct path to java (now that it's fully consistent)
+
 # 0.2.5
 - specify arch for when kernel[:machine] is nil
 - move custom bundle and jdk to cloud files

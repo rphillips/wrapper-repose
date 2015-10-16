@@ -32,7 +32,7 @@ unless node['repose']['cluster_id'].nil?
   node.normal['repose']['cluster_ids'] = [node['repose']['cluster_id']]
 end
 
-directory "#{node['repose']['config_directory']}" do
+directory node['repose']['config_directory'] do
   owner node['repose']['owner']
   group node['repose']['group']
   mode '0755'
@@ -46,22 +46,38 @@ end
 
 if %w(ele-stage ele-prod).include?(node.chef_environment)
   # load non-default secrets
+  ele_credentials = Chef::EncryptedDataBagItem.load('passwords', 'ele')
   repose_credentials = Chef::EncryptedDataBagItem.load('credentials', 'repose')
 
-  identity_username = repose_credentials["identity_username_#{node['ele']['env']}"]
-  identity_password = repose_credentials["identity_password_#{node['ele']['env']}"]
+  # extract regional identity credentials
+  ele_us_auth_api_databag_item = "us_auth_api_password_#{node['ele']['env']}"
+  ele_uk_auth_api_databag_item = "uk_auth_api_password_#{node['ele']['env']}"
 
+  if node['ele']['datacenter'] == 'lon3'
+    identity_url = node['ele']['uk_identity_service_url_2']
+    identity_username = node['ele']['uk_auth_service_username']
+    identity_password = ele_credentials[ele_uk_auth_api_databag_item]
+  else
+    identity_url = node['ele']['us_identity_service_url_2']
+    identity_username = node['ele']['us_auth_service_username']
+    identity_password = ele_credentials[ele_us_auth_api_databag_item]
+  end
+
+  valkyrie_url = repose_credentials["valkyrie_url_#{node['ele']['env']}"]
   valkyrie_username = repose_credentials["valkyrie_username_#{node['ele']['env']}"]
   valkyrie_password = repose_credentials["valkyrie_password_#{node['ele']['env']}"]
 
+  node.set['repose']['keystone_v2']['identity_uri'] = identity_url
   node.set['repose']['keystone_v2']['identity_username'] = identity_username
   node.set['repose']['keystone_v2']['identity_password'] = identity_password
 
+  node.set['repose']['valkyrie_authorization']['valkyrie_server_uri'] = valkyrie_url
   node.set['repose']['valkyrie_authorization']['valkyrie_server_username'] = valkyrie_username
   node.set['repose']['valkyrie_authorization']['valkyrie_server_password'] = valkyrie_password
 
   # set non-default (environment-specific) configuration
-  node.set['repose']['keystone_v2']['identity_uri'] = node['ele']['us_identity_service_url_2']
+
+  node.set['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:7000'
 
   # TODO: these next two attr updates would break a default len > 1 list of peers (should iterate and update ports?)
   # update for stage/prod port

@@ -53,6 +53,8 @@ default['repose']['header_normalization']['blacklist'] = [{
   )
 }]
 
+default['repose']['version'] = '7.1.7.0'
+
 default['repose']['owner'] = 'repose'
 default['repose']['group'] = 'repose'
 

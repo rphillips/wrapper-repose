@@ -1,3 +1,7 @@
+# 0.2.7
+- pin version of repose (to the one that's not broken :wink:)
+- replace boilerplate readme with something useful
+
 # 0.2.6
 - use direct path to java (now that it's fully consistent)
 

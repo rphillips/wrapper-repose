@@ -1,3 +1,7 @@
+# 0.2.9
+- use only base url for identity
+- ensure endpoint id is 'public_api'
+
 # 0.2.8
 - use node eth0 IP for ele environment
 

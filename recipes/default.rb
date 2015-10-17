@@ -1,3 +1,5 @@
+require 'uri'
+
 # do some pre-configuration to ensure repose starts with the correct java, etc. (pkg install will auto-start service)
 cookbook_file '/etc/sysconfig/repose' do
   source 'sysconfig/repose'
@@ -63,6 +65,8 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
     identity_password = ele_credentials[ele_us_auth_api_databag_item]
   end
 
+  identity_url = URI.join(identity_url, '/').to_s # strip trailing path (repose adds it)
+
   valkyrie_url = repose_credentials["valkyrie_url_#{node['ele']['env']}"]
   valkyrie_username = repose_credentials["valkyrie_username_#{node['ele']['env']}"]
   valkyrie_password = repose_credentials["valkyrie_password_#{node['ele']['env']}"]
@@ -91,7 +95,7 @@ if %w(ele-stage ele-prod).include?(node.chef_environment)
   # update for stage/prod port
   node.set['repose']['endpoints'] = [{
     cluster_id: 'repose',
-    id: node[:name],
+    id: 'public_api',
     protocol: 'http',
     hostname: node['network']['ipaddress_eth0'],
     port: '7000',

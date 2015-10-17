@@ -1,3 +1,6 @@
+# 0.2.8
+- use node eth0 IP for ele environment
+
 # 0.2.7
 - pin version of repose (to the one that's not broken :wink:)
 - replace boilerplate readme with something useful

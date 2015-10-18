@@ -25,6 +25,12 @@ default['repose']['endpoints'] = [{
   default: true
 }]
 
+default['repose']['connection_timeout'] = 60000 # in millis
+default['repose']['read_timeout'] = 60000 # in millis
+
+default['repose']['connection_pool']['socket_timeout'] = 60000 # in millis
+default['repose']['connection_pool']['connection_timeout'] = 60000 # in millis
+
 default['repose']['header_normalization']['uri_regex'] = nil
 default['repose']['header_normalization']['whitelist'] = []
 

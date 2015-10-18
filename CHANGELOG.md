@@ -1,3 +1,6 @@
+# 0.2.10
+- extend timeouts for Repose-origin connections to 60 seconds
+
 # 0.2.9
 - use only base url for identity
 - ensure endpoint id is 'public_api'

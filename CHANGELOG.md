@@ -1,3 +1,6 @@
+# 0.2.11
+- grant pre-authorized to hybridRole in Valkyrie filter
+
 # 0.2.10
 - extend timeouts for Repose-origin connections to 60 seconds
 

@@ -1,3 +1,6 @@
+# 0.2.12
+- insert X-Repose-Forwarded-Host header into all requests
+
 # 0.2.11
 - grant pre-authorized to hybridRole in Valkyrie filter
 

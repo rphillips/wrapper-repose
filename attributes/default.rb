@@ -9,6 +9,7 @@ default['repose']['peers'] = [{
 
 default['repose']['filters'] = %w(
   header-normalization
+  header-translation
   keystone-v2
   extract-device-id
   valkyrie-authorization
@@ -31,6 +32,7 @@ default['repose']['read_timeout'] = 60000 # in millis
 default['repose']['connection_pool']['socket_timeout'] = 60000 # in millis
 default['repose']['connection_pool']['connection_timeout'] = 60000 # in millis
 
+default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['uri_regex'] = nil
 default['repose']['header_normalization']['whitelist'] = []
 
@@ -66,6 +68,9 @@ default['repose']['group'] = 'repose'
 
 # attributes for new recipes
 default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
+
+default['repose']['header_translation']['cluster_id'] = ['all']
+default['repose']['header_translation']['uri_regex'] = nil
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'

@@ -108,6 +108,7 @@ end
 # NOTE these hash keys should be left as strings or system-model.cfg.xml.erb will break
 filter_cluster_map = {
   'header-normalization'   => node['repose']['header_normalization']['cluster_id'],
+  'header-translation'     => node['repose']['header_translation']['cluster_id'],
   'keystone-v2'            => node['repose']['keystone_v2']['cluster_id'],
   'extract-device-id'      => node['repose']['extract_device_id']['cluster_id'],
   'valkyrie-authorization' => node['repose']['valkyrie_authorization']['cluster_id'],
@@ -116,6 +117,7 @@ filter_cluster_map = {
 
 filter_uri_regex_map = {
   'header-normalization'   => node['repose']['header_normalization']['uri_regex'],
+  'header-translation'     => node['repose']['header_translation']['uri_regex'],
   'keystone-v2'            => node['repose']['keystone_v2']['uri_regex'],
   'extract-device-id'      => node['repose']['extract_device_id']['uri_regex'],
   'valkyrie-authorization' => node['repose']['valkyrie_authorization']['uri_regex'],

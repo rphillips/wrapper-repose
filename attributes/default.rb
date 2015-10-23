@@ -109,9 +109,9 @@ default['repose']['merge_header']['cluster_id'] = ['all']
 default['repose']['merge_header']['uri_regex'] = nil
 default['repose']['merge_header']['headers'] = %w(X-Roles X-Impersonator-Roles)
 
-default['java']['install_flavor'] = 'oracle'
+force_override['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
-default['java']['jdk_version'] = '8' # override_default
+force_override['java']['jdk_version'] = '8' # override_default
 default['java']['arch'] = 'x86_64' # ensure this is set (nil kernel[:machine] in some cases)
 default['java']['jdk']['8']['x86_64']['url'] = 'http://f203e7ccada4106422d5-525efbc04163a45a7d6a38d479995b34.r68.cf2.rackcdn.com/jdk-8u60-linux-x64.tar.gz'
 default['java']['set_default'] = false

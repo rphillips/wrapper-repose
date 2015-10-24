@@ -12,6 +12,7 @@ end
 include_recipe 'java'
 
 include_recipe 'repose::filter-header-normalization'
+include_recipe 'repose::filter-header-translation'
 include_recipe 'wrapper-repose::filter-extract-device-id'
 include_recipe 'wrapper-repose::filter-keystone-v2'
 include_recipe 'wrapper-repose::filter-merge-header'

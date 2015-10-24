@@ -1,3 +1,6 @@
+# 0.2.13
+- use base Repose cookbook to add header-translation filter
+
 # 0.2.12
 - insert X-Repose-Forwarded-Host header into all requests
 

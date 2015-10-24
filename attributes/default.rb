@@ -71,6 +71,11 @@ default['repose']['bundle_name'] = 'custom-bundle-1.0-SNAPSHOT.ear'
 
 default['repose']['header_translation']['cluster_id'] = ['all']
 default['repose']['header_translation']['uri_regex'] = nil
+default['repose']['header_translation']['headers'] = [{
+  original_name: 'Host',
+  new_name: 'X-Repose-Forwarded-Host',
+  remove_original: 'false'
+}]
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
 default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'

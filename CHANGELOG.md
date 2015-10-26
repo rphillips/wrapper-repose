@@ -1,3 +1,7 @@
+# 0.2.14
+- prevent extract-device-id filter from grabbing /entities/ request
+- remove masking of Valkyrie device level 403s
+
 # 0.2.13
 - use base Repose cookbook to add header-translation filter
 

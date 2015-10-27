@@ -16,7 +16,7 @@ template "#{node['repose']['config_directory']}/keystone-v2.cfg.xml" do
     identity_set_roles: node['repose']['keystone_v2']['identity_set_roles'],
     identity_set_groups: node['repose']['keystone_v2']['identity_set_groups'],
     identity_set_catalog: node['repose']['keystone_v2']['identity_set_catalog'],
-    whitelist_uri_regex: node['repose']['keystone_v2']['whitelist_uri_regex'],
+    whitelist_uri_regexes: node['repose']['keystone_v2']['whitelist_uri_regexes'],
     tenant_uri_extraction_regex: node['repose']['keystone_v2']['tenant_uri_extraction_regex'],
     preauthorized_service_admin_role: node['repose']['keystone_v2']['preauthorized_service_admin_role'],
     token_timeout_variability: node['repose']['keystone_v2']['token_timeout_variability'],

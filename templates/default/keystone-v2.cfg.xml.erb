@@ -3,7 +3,9 @@
 <keystone-v2 xmlns="http://docs.openrepose.org/repose/keystone-v2/v1.0">
     <identity-service username="<%= @identity_username %>" password="<%= @identity_password %>" uri="<%= @identity_uri %>" set-roles-in-header="<%= @identity_set_roles %>" set-groups-in-header="<%= @identity_set_catalog %>" set-catalog-in-header="<%= @identity_set_catalog %>" />
     <white-list>
-        <uri-regex><%= @whitelist_uri_regex %></uri-regex>
+        <% @whitelist_uri_regexes.each do |whitelist_uri_regex| %>
+        <uri-regex><%= whitelist_uri_regex %></uri-regex>
+        <% end %>
     </white-list>
     <tenant-handling>
         <validate-tenant>

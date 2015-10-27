@@ -26,11 +26,11 @@ default['repose']['endpoints'] = [{
   default: true
 }]
 
-default['repose']['connection_timeout'] = 60000 # in millis
-default['repose']['read_timeout'] = 60000 # in millis
+default['repose']['connection_timeout'] = 600_000 # in millis
+default['repose']['read_timeout'] = 600_000 # in millis
 
-default['repose']['connection_pool']['socket_timeout'] = 60000 # in millis
-default['repose']['connection_pool']['connection_timeout'] = 60000 # in millis
+default['repose']['connection_pool']['socket_timeout'] = 600_000 # in millis
+default['repose']['connection_pool']['connection_timeout'] = 600_000 # in millis
 
 default['repose']['header_normalization']['cluster_id'] = ['all']
 default['repose']['header_normalization']['uri_regex'] = nil
@@ -94,7 +94,11 @@ default['repose']['keystone_v2']['identity_uri'] = 'http://localhost:8900/identi
 default['repose']['keystone_v2']['identity_set_roles'] = true
 default['repose']['keystone_v2']['identity_set_groups'] = false
 default['repose']['keystone_v2']['identity_set_catalog'] = false
-default['repose']['keystone_v2']['whitelist_uri_regex'] = '.*/v1.0/(\d+|[a-zA-Z]+:\d+)/agent_installers/.+(\.sh)?'
+default['repose']['keystone_v2']['whitelist_uri_regexes'] = %w(
+  .*/v1.0/(\d+|[a-zA-Z]+:\d+)/agent_installers/.+(\.sh)?
+  .*/pki/.*?
+  .*/version?
+)
 default['repose']['keystone_v2']['tenant_uri_extraction_regex'] = '.*/v1.0/(\d+|[a-zA-Z]+:\d+)/.+'
 default['repose']['keystone_v2']['preauthorized_service_admin_role'] = nil
 default['repose']['keystone_v2']['token_timeout_variability'] = 15

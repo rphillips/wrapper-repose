@@ -1,3 +1,8 @@
+# 0.2.15
+- whitelist /version to allow Nagios check to succeed
+- whitelist /pki/* to allow ServerMill to access keys without token
+- extend timeouts for origin connections to 600 seconds
+
 # 0.2.14
 - prevent extract-device-id filter from grabbing /entities/ request
 - remove masking of Valkyrie device level 403s

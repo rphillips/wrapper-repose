@@ -78,7 +78,7 @@ default['repose']['header_translation']['headers'] = [{
 }]
 
 default['repose']['extract_device_id']['cluster_id'] = ['all']
-default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.*'
+default['repose']['extract_device_id']['uri_regex'] = '.*/hybrid:\d+/entities/.+'
 default['repose']['extract_device_id']['maas_service_uri'] = 'http://localhost:32321'
 default['repose']['extract_device_id']['cache_timeout_millis'] = 60000
 default['repose']['extract_device_id']['delegating_quality'] = nil
@@ -103,7 +103,7 @@ default['repose']['keystone_v2']['token_timeout'] = 600
 default['repose']['valkyrie_authorization']['cluster_id'] = ['all']
 default['repose']['valkyrie_authorization']['uri_regex'] = '.*/hybrid:\d+/(?!agent_installers/).*'
 default['repose']['valkyrie_authorization']['cache_timeout_millis'] = 60000
-default['repose']['valkyrie_authorization']['enable_masking_403s'] = true
+default['repose']['valkyrie_authorization']['enable_masking_403s'] = false
 default['repose']['valkyrie_authorization']['delegating_quality'] = nil
 default['repose']['valkyrie_authorization']['valkyrie_server_uri'] = 'http://localhost:8900/valkyrie/v2.0'
 # defaults are for dev/local (recipe overrides with encrypted data bag item by ele environment)

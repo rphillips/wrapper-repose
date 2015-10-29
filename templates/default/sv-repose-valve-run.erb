@@ -2,11 +2,8 @@
 
 source /etc/sysconfig/repose
 
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle-i386
-export JAVA_BIN=$JAVA_HOME/bin/java
-
 exec chpst -u repose -- \
             ${JAVA_BIN} -- \
               ${JAVA_OPTS} \
               -jar /usr/share/repose/repose-valve.jar \
-              -c /etc/repose 2>&1
+              ${RUN_OPTS} 2>&1

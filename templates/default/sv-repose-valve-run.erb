@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec chpst -u repose -- \
+              /usr/bin/java -- \
+              -jar /usr/share/repose/repose-valve.jar \
+              -c /etc/repose 2>&1

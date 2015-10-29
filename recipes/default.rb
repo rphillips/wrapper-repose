@@ -23,9 +23,13 @@ include_recipe 'repose::install'
 # NOTE repose::default is mostly copied here due to the following code (which makes wrapping nigh impossible):
 # https://github.com/rackerlabs/cookbook-repose/blob/31a561526a1d393b1d7ef8370be26b3999e01f84/recipes/default.rb#L93
 
-service 'repose-valve' do
-  supports restart: true, status: true
-  action [:enable, :start]
+runit_service 'repose-valve' do
+  log_owner 'daemon'
+  log_group 'daemon'
+end
+
+file '/etc/init.d/repose-valve' do
+  action :delete
 end
 
 include_recipe 'repose::load_peers' if node['repose']['peer_search_enabled']

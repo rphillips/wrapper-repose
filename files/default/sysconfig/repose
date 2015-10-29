@@ -8,6 +8,6 @@ REPOSE_JAR=${DAEMON_HOME}/${NAME}.jar
 # default start args
 #START_ARGS="--start --quiet --oknodo --make-pidfile --pidfile ${PID_FILE} --background"
 
-JAVA_OPTS="-server -Xms256m -Xmx1024m -XX:MetaspaceSize=256m"
+JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:MetaspaceSize=256m"
 RUN_OPTS="-c $CONFIG_DIRECTORY"
 CLEAN=/usr/bin/clean-repose-deploy

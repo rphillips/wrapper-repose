@@ -1,3 +1,7 @@
+# 0.2.16
+- switch to Concurrent Mark/Sweep GC
+- bump heap to alleviate out of memory issues
+
 # 0.2.15
 - whitelist /version to allow Nagios check to succeed
 - whitelist /pki/* to allow ServerMill to access keys without token

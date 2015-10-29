@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source /etc/sysconfig/repose
+
 exec chpst -u repose -- \
               /usr/bin/java -- \
               -jar /usr/share/repose/repose-valve.jar \

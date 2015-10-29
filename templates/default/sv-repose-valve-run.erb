@@ -7,5 +7,6 @@ export JAVA_BIN=$JAVA_HOME/bin/java
 
 exec chpst -u repose -- \
             ${JAVA_BIN} -- \
+              ${JAVA_OPTS} \
               -jar /usr/share/repose/repose-valve.jar \
               -c /etc/repose 2>&1
